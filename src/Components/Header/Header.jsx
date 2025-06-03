@@ -75,10 +75,10 @@ const Header = () => {
             <img src={address} alt="address" className="size-5" /> WHERE TO BUY
           </div>
 
-{isOpen ? (
+{isOpen ? ( // if search is open, show close icon
   <FiX
     className="size-5 text-black cursor-pointer"
-    onClick={() => setIsOpen(true)}
+    onClick={() => setIsOpen(false)}
   />
 ) : (
   <img
@@ -237,10 +237,6 @@ const Header = () => {
           type="text"
           placeholder="Type what you're looking for..."
           className="w-full text-base p-2 border-b outline-none"
-        />
-        <FiX
-          className="text-2xl ml-4 cursor-pointer"
-          onClick={() => setIsOpen(false)}
         />
       </div>
 
