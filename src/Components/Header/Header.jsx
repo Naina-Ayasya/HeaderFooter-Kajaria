@@ -32,7 +32,7 @@ const Header = () => {
   };
 
   return (
-    <div className="font-urbanist fixed top-0 right-[2px] w- bg-white z-40">
+    <div className="font-urbanist fixed top-0 right-[2px] w-screen bg-white z-40">
       {/* Top Contact Bar */}
       <div className="flex justify-between px-4 py-2 text-sm text-gray-600">
         <div className="flex text-xs mx-20 gap-4">
