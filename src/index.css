@@ -2,3 +2,34 @@
 @tailwind components;
 @tailwind utilities;
 
+@layer utilities {
+@keyframes slide-fade-down{
+0% {
+    opacity: 0;
+    transform: translateY(-10px);
+}
+100% {
+    opacity: 1;
+    transform: translateY(0);
+}
+}
+
+@keyframes slide-fade-up {
+0% {
+        opacity: 1; /* fully visible at start */
+        transform: translateY(0); /* at original position */
+}
+100% {
+        opacity: 0; /* fully invisible at end */
+        transform: translateY(-10px); 
+}
+}
+
+.slide-fade-down {
+    animation: slide-fade-down 0.7s ease-out forwards;
+}
+
+.slide-fade-up {
+    animation: slide-fade-up 0.7s ease-in forwards;
+}
+}

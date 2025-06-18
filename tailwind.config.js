@@ -10,6 +10,7 @@ export default {
         urbanist: ['Urbanist', 'sans-serif'],
       },
     },
+     
   },
   plugins: [],
 }
