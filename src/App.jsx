@@ -24,7 +24,7 @@ function App() {
         <Route path="/investor" element={<Investor />} />
         <Route path="/search" element={<Search />} />
       </Routes>
-         <Footer/> {/* Always render Footer */}
+          {/* Always render Footer */}
     </>
   );
 }
