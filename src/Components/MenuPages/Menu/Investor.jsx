@@ -3,8 +3,9 @@ import { useNavigate } from "react-router-dom";
 import tiles from '../../../assets/image 9.png'
 import { FiX, FiSearch } from "react-icons/fi";
 import logo from "../../../assets/logo.png"
+import arrow from '../../../assets/arrow-right.png';
 
-function Investor() {
+function Investor({setMobileMenuOpen, setSelectedSection}) {
  const navigate = useNavigate();  
 
   return (
@@ -15,12 +16,13 @@ function Investor() {
          {/* Back button */} 
           <div className="xl:hidden px-4 py-3 flex items-center">
             <button
-              onClick={() => navigate('/menu')}
-              className="text-gray-700 font-medium text-sm px-3 py-1 rounded hover:bg-gray-200"
-            >
-              ← Back
-            </button>
-          </div>
+              onClick={() => {
+  setSelectedSection(null);
+  setMobileMenuOpen(true);
+}} className="text-gray-700 flex items-center gap-2 font-semibold px-7 py-1 rounded hover:bg-gray-200" >
+    <img src={arrow} alt="arrow" className="w-[16px] h-[16px]" />BACK
+        </button>
+        </div>
           </div>
 
               <div>

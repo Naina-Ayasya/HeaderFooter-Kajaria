@@ -3,9 +3,10 @@ import { useNavigate } from "react-router-dom";
 import { FiX, FiSearch } from "react-icons/fi";
 import logo from "../../../assets/logo.png"
 import tiles from '../../../assets/image 9.png'
+import arrow from '../../../assets/arrow-right.png';
 
 
-function About() {
+function About({ setMobileMenuOpen, setSelectedSection}) {
       const navigate = useNavigate();  
 
   return (
@@ -15,13 +16,14 @@ function About() {
          {/* Back button */} 
           <div className="xl:hidden px-4 py-3 flex items-center">
             <button
-              onClick={() => navigate('/menu')}
-              className="text-gray-700 font-medium text-sm px-3 py-1 rounded hover:bg-gray-200"
-            >
-              ← Back
+              onClick={() => {
+  setSelectedSection(null);
+  setMobileMenuOpen(true);
+}} className="text-gray-700 flex items-center gap-2 font-semibold px-7 py-1 rounded hover:bg-gray-200" >
+              <img src={arrow} alt="arrow" className="w-[16px] h-[16px]" />BACK
             </button>
           </div>
-          
+            
               <div>
               <ul className="font-urbanist mx-12 space-y-5 text-left text-gray-500 mb-6">
                 <li className="flex flex-row-2 mt-10 -m-1 hover:text-blue-700 text-nowrap">Overview </li>

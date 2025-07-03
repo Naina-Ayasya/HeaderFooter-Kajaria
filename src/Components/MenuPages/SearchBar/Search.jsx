@@ -54,7 +54,8 @@ function Search() {
 
       {/* Bottom Close Button */}
       <div className="fixed bottom-6 left-1/2 transform -translate-x-1/2 bg-white rounded-full shadow-lg p-3">
-        <FiX className="text-yellow-700 text-xl" onClick={() => navigate('/menu')}/>
+        <FiX className="text-yellow-700 text-xl" onClick={() => navigate('/')}
+/>
       </div>
     </div>
   );

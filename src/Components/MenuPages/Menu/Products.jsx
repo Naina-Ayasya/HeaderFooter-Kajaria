@@ -15,9 +15,10 @@ import vitronite from '../../../Assets/Vitronite Blue 1.png';
 import menutiles from '../../../Assets/Menu-Tiles 2 1.png';
 import eternity from '../../../Assets/Eternity blue.png';
 import gressbond from '../../../Assets/gressbond.png';
+import arrow from '../../../assets/arrow-right.png';
 
 
-const Products = () => {
+const Products = ({setMobileMenuOpen, setSelectedSection}) => {
   const navigate = useNavigate();  
 
   return (
@@ -27,12 +28,13 @@ const Products = () => {
      {/* Back button */}
       <div className="xl:hidden px-4 py-3 flex items-center">
         <button
-          onClick={() => navigate('/menu')}
-          className="text-gray-700 font-medium text-sm px-3 py-1 rounded hover:bg-gray-200"
-        >
-          ← Back
-        </button>
-      </div>
+          onClick={() => {
+  setSelectedSection(null);
+  setMobileMenuOpen(true);
+}} className="text-gray-700 flex items-center gap-2 font-semibold px-7 py-1 rounded hover:bg-gray-200" >
+      <img src={arrow} alt="arrow" className="w-[16px] h-[16px]" />BACK
+          </button>
+            </div>
       <div className="py-4 font-urbanist mx-12 text-left">
         <h1 className="text-3xl font-semibold mb-4">Applications</h1>
       </div>
@@ -81,15 +83,15 @@ const Products = () => {
 
   <div>
               <ul className="space-y-4 text-left text-gray-500 mb-7">
-                <li className="flex flex-row-2 mx-5 mt-10 hover:text-blue-700 text-nowrap">Glazed Vitrified Tiles -<img src={eternity} alt="eternity" className="w-[85.26px] h-[12px] ml-1 my-2"/></li>
+                <li className="flex flex-row-2 mx-5 mt-10 hover:text-blue-700 text-nowrap">Glazed Vitrified Tiles -<img src={eternity} alt="eternity" className="w-[85.26px] h-[12px] lg:w-[107px] lg:h-[15px] ml-1 my-2"/></li>
                   <hr className="w-full mb-7 border-t border-gray-400" />
-                <li className="flex flex-row-2 mx-5 hover:text-blue-700 text-nowrap">Gres Floor & Wall Tiles - <img src={gress} alt="gress" className="w-[45.5px] h-[14px] ml-1 my-1"/></li>
+                <li className="flex flex-row-2 mx-5 hover:text-blue-700 text-nowrap">Gres Floor & Wall Tiles - <img src={gress} alt="gress" className="w-[45.5px] h-[14px] lg:w-[49px] lg:h-[15px] ml-1 my-1"/></li>
                   <hr className="w-full mb-7 border-t border-gray-400" />
-                <li className="flex flex-row-2 mx-5 hover:text-blue-700 text-nowrap">Polished Vitrified Tiles - <img src={vitronite} alt="vitronite" className="w-[45.5px] h-[14px] ml-1 my-1"/></li>
+                <li className="flex flex-row-2 mx-5 hover:text-blue-700 text-nowrap">Polished Vitrified Tiles - <img src={vitronite} alt="vitronite" className="w-[45.5px] h-[14px] lg:w-[85px] lg:h-[15px] ml-1 my-1"/></li>
                   <hr className="w-full mb-7 border-t border-gray-400" />
-                <li className="flex flex-row-2 mx-5 hover:text-blue-700 text-nowrap">Faucets and Sanitaryware - <img src={kerovit} alt="kerovit" className="w-[45.5px] h-[14px] ml-1 my-2"/></li>
+                <li className="flex flex-row-2 mx-5 hover:text-blue-700 text-nowrap">Faucets and Sanitaryware - <img src={kerovit} alt="kerovit" className="w-[45.5px] h-[14px] lg:w-[66.11px] lg:h-[15px] ml-1 my-2"/></li>
                   <hr className="w-full mb-7 border-t border-gray-400" />
-                <li className="flex flex-row-2 mx-5 hover:text-blue-700 text-nowrap">Tile Adhesive - <img src={gressbond} alt="gressbond" className="w-[96.59px] h-[15px] ml-1 my-2"/></li>
+                <li className="flex flex-row-2 mx-5 hover:text-blue-700 text-nowrap">Tile Adhesive - <img src={gressbond} alt="gressbond" className="w-[96.59px] h-[15px] lg:w-[103.02px] lg:h-[15px] ml-1 my-2"/></li>
                   <hr className="w-full mb-7 border-t border-gray-400" />
               </ul>
             </div>

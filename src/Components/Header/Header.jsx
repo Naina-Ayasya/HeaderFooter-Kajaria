@@ -30,6 +30,11 @@ import { useNavigate } from "react-router-dom";
 import history from "../../assets/History.png";
 import trend from "../../assets/Trend.png";
 import close from "../../assets/Close.png";
+import Menu from '../MenuPages/Menu/Menu';
+import Products from "../MenuPages/Menu/Products";
+import About from "../MenuPages/Menu/About";
+import Resources from "../MenuPages/Menu/Resources";
+import Investor from "../MenuPages/Menu/Investor";
 
 const Header = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -38,7 +43,8 @@ const Header = () => {
   const navigate = useNavigate();
   const [animateOut, setAnimateOut] = useState(false); //function to control the animation effect
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false); //it toggles the menu icon [from menu.jsx] whose path is defined in app.jsx
-
+  // State to track the selected section for the dropdown 
+  const [selectedSection, setSelectedSection] = useState(null);
   // Ref to track the header element
   const headerRef = useRef(null);
 
@@ -76,7 +82,7 @@ const Header = () => {
   return (
     <div
       ref={headerRef}
-      className="relative font-urbanist xl:mt-6 right-[2px] w-screen bg-white z-[100]"
+      className="relative font-urbanist xl:mt-1 right-[2px] w-screen bg-white z-[100]"
     >
       {/* Top Contact Bar */}
       <div className="hidden xl:flex justify-between px3 -py-5 text-sm text-gray-600">
@@ -114,24 +120,23 @@ const Header = () => {
             />
 
             {/* Hamburger Icon */}
-            <button
-              onClick={() => {
-                if (mobileMenuOpen) {
-                  setMobileMenuOpen(false);
-                  navigate("/"); //navigate to a page you want to go after closing
-                } else {
-                  setMobileMenuOpen(true);
-                  navigate("/menu");
-                }
-              }}
-              className="focus:outline-none"
-            >
-              {mobileMenuOpen ? (
-                <FiX className="w-[24px] h-[24px] absolute left-2 top-[40px] ml-5 xl:hidden" />
-              ) : (
-                <FiMenu className="w-[24px] h-[24px] absolute left-2 top-[40px] ml-5 xl:hidden" />
-              )}
-            </button>
+           <div className="focus:outline-none">
+  {mobileMenuOpen || selectedSection ? (
+    <FiX
+      className="w-[24px] h-[24px] absolute left-2 top-[40px] ml-5 xl:hidden"
+      onClick={() => {
+        setMobileMenuOpen(false); // ✅ close menu
+        setSelectedSection(null); // ✅ close product/about/etc.
+      }}
+    />
+  ) : (
+    <FiMenu
+      className="w-[24px] h-[24px] absolute left-2 top-[40px] ml-5 xl:hidden"
+      onClick={() => setMobileMenuOpen(true)}
+    />
+  )}
+</div>
+
           </div>
 
           <nav className="hidden xl:flex absolute left-[330px]  -ml-7 gap-12 font-semibold text-nowrap text-xs">
@@ -518,8 +523,42 @@ const Header = () => {
           </div>
         </div>
       )}
+      {mobileMenuOpen && (
+  <Menu //This is the menu component which will be displayed when menu icon is clicked 
+    setMobileMenuOpen={setMobileMenuOpen} 
+    setSelectedSection={setSelectedSection}//
+  />
+)}
+
+{/* Conditional sections rendered inside Header layout */}
+{selectedSection === 'products' && ( //it is condition to check if the product section is selelcted to render the Products component in header
+  <Products
+    setSelectedSection={setSelectedSection}
+    setMobileMenuOpen={setMobileMenuOpen}
+  />
+)}
+{selectedSection === 'about' && (
+  <About
+    setSelectedSection={setSelectedSection}
+    setMobileMenuOpen={setMobileMenuOpen}
+  />
+)}
+{selectedSection === 'resources' && (
+  <Resources
+    setSelectedSection={setSelectedSection}
+    setMobileMenuOpen={setMobileMenuOpen}
+  />
+)}
+{selectedSection === 'investor' && (
+  <Investor
+    setSelectedSection={setSelectedSection}
+    setMobileMenuOpen={setMobileMenuOpen}
+  />
+)}
+
     </div>
   );
+  
 };
 
 export default Header;
